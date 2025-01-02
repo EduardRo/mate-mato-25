@@ -5,7 +5,7 @@ import TeoriePage from '@/pages/TeoriePage.vue'
 import DesprePage from '@/pages/DesprePage.vue'
 import ClaseMenuPage from '@/pages/ClaseMenuPage.vue'
 import MateriiMenuPage from '@/pages/MateriiMenuPage.vue'
-//import TestPage from '@/pages/TestPage.vue'
+import TestPage from '@/pages/TestPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,11 +35,11 @@ const router = createRouter({
     {
       path:'/materii/:codclasa', name:'MateriiMenu', component:MateriiMenuPage
     },
-    /*
+    
     {
       path:'/test/:codserie', name:'Test', component:TestPage
     }
-      */
+    
   ],
 })
 

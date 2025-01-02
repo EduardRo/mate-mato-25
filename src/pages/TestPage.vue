@@ -4,7 +4,7 @@
        <!-- {{ $route.params.codtest }} --> 
     
         <div v-if="showQuiz" v-for="item in items" :key="item.id" class="flex justify-center">
-            <!--
+            
             <button 
             @click="goToRoute('Test', item.codserie)"
             class="flex justify-between bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-1 border border-blue-700 rounded w-30rem ">
@@ -12,7 +12,7 @@
             
             </button>
             <div>{{ quizStore.answers }}</div>
-            -->
+            
         </div>
         
         <div>
@@ -30,8 +30,8 @@
     <script setup>
     import { ref, onMounted, computed } from 'vue';
     import axios from 'axios';
-    import Quiz from '../components/Quiz.vue';
-    import Score from '../components/Score.vue';
+    import Quiz from '../components/QuizComponent.vue';
+    //import Score from '../components/Score.vue';
     import { useQuizStore } from '../stores/quiz.js';
     import { useRoute, useRouter } from 'vue-router';
     
