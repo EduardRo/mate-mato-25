@@ -7,7 +7,7 @@
 
             <button
             @click="goToRoute('Test', item.codserie)"
-            class="flex justify-between bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-1 border border-blue-700 rounded w-30rem ">
+            class="flex justify-between bg-blue-500  text-white font-bold py-2 px-1 border border-blue-500 rounded w-30rem ">
             <div >{{ item.codserie }} - {{ item.codtest }} - {{ item.enunt }} </div>
 
             </button>
