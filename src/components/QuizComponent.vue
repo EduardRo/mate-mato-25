@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import {useQuizStore} from '../stores/quiz.js';
+import {useQuizStore} from '../store/quiz.js';
 const props = defineProps({
     questions: Object,
     answer:'',
@@ -27,7 +27,7 @@ function saveAnswerAndNextQuestion(answer) {
         <img  :src="`https://matematicon.ro/m/mem/${questions.calea}${questions.enunt}.png`" />
     </div>
        {{ questions.calea }}
-        
+
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold m-2 py-2 px-4 rounded" @click="saveAnswerAndNextQuestion(questions.v1)">
             <img :src="`https://matematicon.ro/m/mem/${questions.calea}${questions.v1}.png`" />
         </button>
@@ -38,11 +38,11 @@ function saveAnswerAndNextQuestion(answer) {
             <img :src="`https://matematicon.ro/m/mem/${questions.calea}${questions.v3}.png`" /></button>
 
         <p>Question number: {{ quizStore.questionNumber }}</p>
-        
+
     </div>
 
-    
-    
-    <p>{{ quizStore.answers }}</p>
+
+
+    <div>{{ quizStore.answers }}</div>
 
 </template>
