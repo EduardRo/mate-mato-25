@@ -2,8 +2,8 @@
     <div class="flex flex-col">
         <h1>This is TEST page</h1>
        <!-- {{ $route.params.codtest }} -->
-
-        <div v-if="showQuiz" v-for="item in items" :key="item.id" class="flex justify-center">
+      <div v-if="showQuiz">
+        <div  v-for="item in items" :key="item.id" class="flex justify-center">
 
             <button
             @click="goToRoute('Test', item.codserie)"
@@ -14,7 +14,7 @@
             <div>{{ quizStore.answers }}</div>
 
         </div>
-
+      </div>
         <div>
 
 
