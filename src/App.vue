@@ -10,7 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="wrapper">
 
 
-      <nav>
+      <nav style="margin-top: 20px; font-size: 2rem;">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/clase">Clase</RouterLink>
@@ -27,7 +27,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+
 }
 
 .logo {
@@ -37,7 +37,7 @@ header {
 
 nav {
 
-  font-size: 12px;
+
   text-align: center;
   margin-top: 2rem;
 }
