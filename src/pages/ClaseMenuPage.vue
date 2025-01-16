@@ -3,7 +3,7 @@
     <h1 class="green">Alege clasa din meniul de mai jos:</h1>
 
 
-    <div class="flex items-center justify-center min-h-screen">
+    <div class="flex items-center justify-center ">
       <div class="space-y-1 w-full">
         <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
           <button

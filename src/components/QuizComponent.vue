@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+
 import { useQuizStore } from '../store/quiz.js';
 
 const props = defineProps({

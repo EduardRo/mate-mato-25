@@ -15,14 +15,14 @@ export const useQuizStore = defineStore('quiz', {
     },
 
     calculateScore() {
-      let score = 0
+      this.score++
       for (const questionId in this.answers) {
-        score=score+1
+
         if (this.answers[questionId] === 'correct') {
-          score=score+1
+          this.score++
         }
       }
-      return score
+      return this.score
     }
   }
 })

@@ -1,44 +1,24 @@
 <template>
   <div class="flex flex-col">
     <h1>This is TEST page</h1>
-
-    <!-- Debugging -->
-    <!--
-    <p>Loading state: {{ loading }}</p>
-    <p>Items length: {{ items.length }}</p>
-    <p>Question number: {{ quizStore.questionNumber }}</p>
-  -->
-    <!-- Loading state -->
-
     <div v-if="loading" class="text-center">
       <p>Loading...</p>
     </div>
-
     <!-- Display quiz items -->
     <div v-else-if="showQuiz && items.length > 0">
       <div v-for="item in items" :key="item.id" class="flex justify-center">
-        <!--
-        <button
-          @click="goToRoute('Test', item.codserie)"
-          class="flex justify-between bg-blue-500 text-white font-bold py-2 px-1 border border-blue-500 rounded w-30rem">
-          <div>{{ item.codserie }} - {{ item.codtest }} - {{ item.enunt }}</div>
-        </button>
-
-        {{ quizStore.answers }} -->
         {{ quizStore }}
         <p>Loading state: {{ loading }}</p>
-    <p>Items length: {{ items.length }}</p>
-    <p>Question number: {{ quizStore.questionNumber }}</p>
-    <p>Score: {{ quizStore.score }}</p>
+        <p>Items length: {{ items.length }}</p>
+        <p>Question number: {{ quizStore.questionNumber }}</p>
+        <p>Score: {{ quizStore.score }}</p>
       </div>
     </div>
-
     <!-- Final test message -->
     <div v-else>
       <p>This is the final of the test</p>
-      {{ quizStore }}
+      {{ quizStore.score }}
     </div>
-
     <!-- Quiz component or score -->
     <div>
       <Quiz v-if="showQuiz && items.length > 0" :questions="items[quizStore.questionNumber]" />
@@ -51,7 +31,6 @@
 import { ref, onMounted, computed, onBeforeUnmount } from 'vue';
 import axios from 'axios';
 import Quiz from '../components/QuizComponent.vue';
-// import Score from '../components/Score.vue';
 import { useQuizStore } from '../store/quiz.js';
 import { useRoute, useRouter } from 'vue-router';
 

@@ -10,7 +10,7 @@
 
 
 
-      <div class="flex items-center justify-center min-h-screen">
+      <div class="flex items-center justify-center">
   <div class="space-y-1 py-2 w-full">
     <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
       <button
