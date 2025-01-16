@@ -7,6 +7,7 @@ export const useQuizStore = defineStore('quizStore', {
     currentIndex: 0,
     score: 0,
   }),
+
   actions: {
     async fetchQuestions() {
       const response = await axios.get('http://127.0.0.1:8000/api/test/M09AL06');
@@ -22,5 +23,7 @@ export const useQuizStore = defineStore('quizStore', {
       if (isCorrect) this.score += 10;
       this.currentIndex += 1;
     },
+
   },
+
 });

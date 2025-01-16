@@ -25,12 +25,18 @@
         </button>
 
         {{ quizStore.answers }} -->
+        {{ quizStore }}
+        <p>Loading state: {{ loading }}</p>
+    <p>Items length: {{ items.length }}</p>
+    <p>Question number: {{ quizStore.questionNumber }}</p>
+    <p>Score: {{ quizStore.score }}</p>
       </div>
     </div>
 
     <!-- Final test message -->
     <div v-else>
       <p>This is the final of the test</p>
+      {{ quizStore }}
     </div>
 
     <!-- Quiz component or score -->

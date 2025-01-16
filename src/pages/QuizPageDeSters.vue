@@ -5,6 +5,7 @@
   <div v-else>
     <router-link to="/results">See Results</router-link>
   </div>
+  {{ questions }}
 </template>
 
 <script>

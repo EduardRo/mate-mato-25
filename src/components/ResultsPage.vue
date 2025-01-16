@@ -1,24 +1,24 @@
-<template>
-  <div>
-    <h1>Your Score: {{ store.score }}</h1>
-    <button @click="saveScore">Save Score</button>
-    <router-link to="/">Back to Home</router-link>
-  </div>
-</template>
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
-<script>
-import { useQuizStore } from '../store/quizStore';
+const route = useRoute();
+const score = ref(0);
+const answers = ref([]);
 
-export default {
-  setup() {
-    const store = useQuizStore();
-
-    const saveScore = () => {
-      const userId = 1; // Replace with dynamic user ID
-      store.submitScore(userId);
-    };
-
-    return { store, saveScore };
-  },
-};
+onMounted(() => {
+  score.value = Number(route.query.score);
+  answers.value = JSON.parse(route.query.answers || '[]');
+});
 </script>
+
+<template>
+  <h1>Results Page</h1>
+  <p>Your Score: {{ score }}</p>
+  <h2>Answers:</h2>
+  <ul>
+    <li v-for="(answer, index) in answers" :key="index">
+      Question {{ index + 1 }}: {{ answer.isCorrect ? 'Correct' : 'Incorrect' }}
+    </li>
+  </ul>
+</template>

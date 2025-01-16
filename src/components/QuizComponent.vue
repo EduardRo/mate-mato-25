@@ -4,16 +4,21 @@ import { useQuizStore } from '../store/quiz.js';
 
 const props = defineProps({
   questions: Object,
-  answer: '',
+  //answer: '',
 });
 
 const quizStore = useQuizStore();
 
-const count = ref(0);
+//const count = ref(0);
 
 function saveAnswerAndNextQuestion(answer) {
   console.log(quizStore.questionNumber);
+  const isCorrect = answer === props.questions.correctAnswer; // Assuming correctAnswer is provided
   quizStore.addAnswer(quizStore.questionNumber, answer);
+  if (isCorrect) {
+    quizStore.incrementScore(); // Increment score if correct
+  }
+  quizStore.calculateScore();
   quizStore.nextQuestion();
   console.log(answer);
 }
