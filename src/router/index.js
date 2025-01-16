@@ -6,7 +6,7 @@ import DesprePage from '@/pages/DesprePage.vue'
 import ClaseMenuPage from '@/pages/ClaseMenuPage.vue'
 import MateriiMenuPage from '@/pages/MateriiMenuPage.vue'
 import TestPage from '@/pages/TestPage.vue'
-import QuizPage from '@/pages/QuizPageDeSters.vue'
+
 import ResultsPage from '@/pages/ResultsPage.vue'
 
 const router = createRouter({
@@ -42,7 +42,7 @@ const router = createRouter({
       path:'/test/:codserie', name:'Test', component:TestPage
     },
 
-    { path: '/quiz', component: QuizPage },
+
     { path: '/results', component: ResultsPage },
 
   ],

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { useQuizStore } from '../store/quizStore';
+import { useQuizStore } from '../store/quiz';
 
 export default {
   setup() {

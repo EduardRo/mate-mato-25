@@ -4,6 +4,7 @@ import { useQuizStore } from '../store/quiz.js';
 
 const props = defineProps({
   questions: Object,
+
   //answer: '',
 });
 
@@ -11,14 +12,18 @@ const quizStore = useQuizStore();
 
 //const count = ref(0);
 
-function saveAnswerAndNextQuestion(answer) {
+function saveAnswerAndNextQuestion(answer, enunt) {
+  console.log(enunt);
   console.log(quizStore.questionNumber);
+  console.log(quizStore.score);
   const isCorrect = answer === props.questions.correctAnswer; // Assuming correctAnswer is provided
   quizStore.addAnswer(quizStore.questionNumber, answer);
+  quizStore.addEnunt(quizStore.questionNumber, enunt);
   if (isCorrect) {
     quizStore.incrementScore(); // Increment score if correct
   }
-  quizStore.calculateScore();
+
+  quizStore.calculateScore(); // verificare score
   quizStore.nextQuestion();
   console.log(answer);
 }
@@ -40,7 +45,7 @@ function saveAnswerAndNextQuestion(answer) {
         v-for="(answer, index) in [questions.v1, questions.v2, questions.v3]"
         :key="index"
         class="flex-grow basis-1/2 bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        @click="saveAnswerAndNextQuestion(answer)"
+        @click="saveAnswerAndNextQuestion(answer, questions.enunt)"
       >
         <img
           :src="`https://matematicon.ro/m/mem/${questions.calea}${answer}.png`"

@@ -12,17 +12,22 @@
         <p>Items length: {{ items.length }}</p>
         <p>Question number: {{ quizStore.questionNumber }}</p>
         <p>Score: {{ quizStore.score }}</p>
+        <p>Answers: {{ quizStore.answers }}</p>
       </div>
     </div>
     <!-- Final test message -->
     <div v-else>
       <p>This is the final of the test</p>
-      {{ quizStore.score }}
+      <p>CodSerie:{{ route.params.codserie }}</p>
+      <p>enunt:{{ quizStore.enunt }}</p>
+      <p>Score:{{ quizStore.score }}</p>
+      <p>Answer:{{ quizStore.answers }}</p>
+      <p>Questions:{{ quizStore.questionNumber }}</p>
     </div>
     <!-- Quiz component or score -->
     <div>
       <Quiz v-if="showQuiz && items.length > 0" :questions="items[quizStore.questionNumber]" />
-      <Score v-else />
+
     </div>
   </div>
 </template>
@@ -48,6 +53,7 @@ function resetState() {
   items.value = [];
   loading.value = true;
   quizStore.questionNumber = 0; // Reset the question number
+  quizStore.score = 0;
   quizStore.answers = []; // Clear answers if needed
   console.log('State reset');
 }

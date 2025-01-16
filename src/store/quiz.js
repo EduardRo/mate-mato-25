@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const useQuizStore = defineStore('quiz', {
   state: () => ({
     answers: {},
+    enunt:{},
     questionNumber: 0,
     score: 0
   }),
@@ -13,16 +14,21 @@ export const useQuizStore = defineStore('quiz', {
     nextQuestion() {
       this.questionNumber++;
     },
+    addEnunt(questionId, enunt) {
+      this.enunt[questionId] = enunt;
+    },
 
     calculateScore() {
-      this.score++
+      let calculatedScore = 0; // Start with 0
       for (const questionId in this.answers) {
-
-        if (this.answers[questionId] === 'correct') {
-          this.score++
+        const answer = this.answers[questionId];
+        if (answer.startsWith('R')) { // Check if the answer starts with "R"
+          calculatedScore++;
         }
       }
-      return this.score
-    }
+      this.score = calculatedScore; // Update the reactive score
+      console.log('Recalculated Score:', this.score);
+      return this.score;
+    },
   }
 })
