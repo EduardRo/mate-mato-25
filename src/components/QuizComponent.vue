@@ -1,6 +1,10 @@
 <script setup>
 
 import { useQuizStore } from '../store/quiz.js';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 
 const props = defineProps({
   questions: Object,
@@ -26,6 +30,18 @@ function saveAnswerAndNextQuestion(answer, enunt) {
   quizStore.calculateScore(); // verificare score
   quizStore.nextQuestion();
   console.log(answer);
+  if (quizStore.questionNumber > 4) {
+    console.log('final');
+    console.log(quizStore.score);
+    console.log(quizStore.answers);
+    router.push({
+  name: 'ResultsPage',
+  query: { score: quizStore.score,
+    answers: JSON.stringify(quizStore.answers),
+    enunt: JSON.stringify(quizStore.enunt) },
+});
+
+  }
 }
 </script>
 
@@ -56,10 +72,5 @@ function saveAnswerAndNextQuestion(answer, enunt) {
 
 
   </div>
-  <!--
-  <div>
-    <p>Question number: {{ quizStore.questionNumber }}</p>
-    {{ quizStore.answers }}
-  </div>
-  -->
+
 </template>

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+//import {  useRouter } from 'vue-router';
 
 export const useQuizStore = defineStore('quiz', {
   state: () => ({
@@ -30,5 +31,6 @@ export const useQuizStore = defineStore('quiz', {
       console.log('Recalculated Score:', this.score);
       return this.score;
     },
+
   }
 })

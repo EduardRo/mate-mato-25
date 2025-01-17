@@ -43,7 +43,7 @@ const router = createRouter({
     },
 
 
-    { path: '/results', component: ResultsPage },
+    { path: '/results', name: 'ResultsPage', component: ResultsPage },
 
   ],
 })

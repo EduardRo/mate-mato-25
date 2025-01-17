@@ -37,12 +37,12 @@ import { ref, onMounted, computed, onBeforeUnmount } from 'vue';
 import axios from 'axios';
 import Quiz from '../components/QuizComponent.vue';
 import { useQuizStore } from '../store/quiz.js';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 
 const items = ref([]);
 const loading = ref(true);
 const route = useRoute();
-const router = useRouter();
+//const router = useRouter();
 const quizStore = useQuizStore();
 
 // Computed property to determine if the quiz should still be shown
@@ -59,9 +59,7 @@ function resetState() {
 }
 
 // Function to navigate to another route
-function goToRoute(routeName, codserie) {
-  router.push({ name: routeName, params: { codserie } });
-}
+
 
 // Fetch data when the component is mounted
 onMounted(async () => {
