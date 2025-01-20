@@ -1,18 +1,52 @@
-<script>
-
-
-export default {
-  name:'TeoriePage'
-};
-</script>
-
 <template>
   <div class="greetings">
-    This is the theory page. It displays the theory of the quiz
+    <h1 class="green">Alege clasa din meniul de mai jos:</h1>
+    <p>Teoriepage</p>
 
+    <div class="flex items-center justify-center ">
+      <div class=" py-2 w-full">
+        <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
+          <button
+            @click="goToRoute('TeorieClasa', item.codclasa)"
+            class="shared-button"
+          >
+            {{ item.denumireclasa }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
+<script>
+import axios from 'axios';
+export default {
+  name: 'TeorieClaseMenuPage',
+  data() {
+    return {
+      items: [],
+    };
+  },
+  mounted() {
+    axios
+      .get('http://127.0.0.1:8000/api/clase')
+      .then((response) => {
+        this.items = response.data;
+      })
+      .catch((error) => {
+        console.error('Error fetching items', error);
+      });
+    console.log(this.items);
+  },
+  methods: {
+    goToRoute(routeName, codclasa) {
+      this.$router.push({ name: routeName, params: { codclasa: codclasa } });
+      console.log(codclasa);
+      console.log(routeName);
+    },
+  },
+};
+</script>
 <style scoped>
 .greetings {
   width: 100%; /* Full width */
@@ -20,6 +54,19 @@ export default {
   margin: 0 auto; /* Center align for larger screens */
   padding: 0rem; /* Consistent padding */
 }
+
+.green {
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Optional: limit the width for better readability */
+  margin: 0 auto; /* Center align for larger screens */
+  padding: 1rem; /* Consistent padding */
+  font-size: larger;
+  background: blueviolet;
+  color: white;
+  font-weight: 100;
+
+}
+
 
 .shared-button {
   display: flex;

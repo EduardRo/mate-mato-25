@@ -5,13 +5,14 @@
 
     </p><p class="green">Alege materia din meniul de mai jos:</p>
 
-
+    <p>TeorieMateriiMenuPage</p>
 
 
     <div class="flex items-center justify-center">
       <div class="space-y-0 py-2 w-full">
         <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
           <button @click="goToRoute('Test', item.codserie)"
+
             class="shared-button">
             <!-- Text on the left -->
             <span>{{ item.denumireserie }} - {{ item.codserie }}</span>
@@ -49,7 +50,7 @@
 import axios from 'axios';
 import { StarIcon } from '@heroicons/vue/24/outline';
 export default {
-  name: 'TeorieMateriiMenuPage',
+  name: 'MateriiMenuPage',
   data() {
     return {
       items: [],
@@ -68,7 +69,7 @@ export default {
   mounted() {
 
     console.log(this.codclasa);
-    axios.get(`http://127.0.0.1:8000/api/serii/${this.$route.params.codclasa}`)
+    axios.get(`http://127.0.0.1:8000/api/teorie/${this.$route.params.codclasa}`)
       .then(response => { this.items = response.data; })
       .catch(error => { console.error('Error fetching items', error); });
     console.log(this.items)
@@ -79,6 +80,7 @@ export default {
       this.$router.push({ name: routeName, params: { codserie: codserie } });
       console.log(codserie);
       console.log(routeName);
+      console.log('those are the items',this.items)
     }
   }
 };

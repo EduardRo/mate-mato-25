@@ -55,6 +55,19 @@ export default {
   padding: 0rem; /* Consistent padding */
 }
 
+.green {
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Optional: limit the width for better readability */
+  margin: 0 auto; /* Center align for larger screens */
+  padding: 1rem; /* Consistent padding */
+  font-size: larger;
+  background: blueviolet;
+  color: white;
+  font-weight: 100;
+
+}
+
+
 .shared-button {
   display: flex;
   align-items: center;

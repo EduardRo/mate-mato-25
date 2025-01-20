@@ -1,13 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // import HomeView from '../views/HomeView.vue'
 import HomePage from '../pages/HomePage.vue'
-import TeoriePage from '@/pages/TeoriePage.vue'
+
 import DesprePage from '@/pages/DesprePage.vue'
 import ClaseMenuPage from '@/pages/ClaseMenuPage.vue'
 import MateriiMenuPage from '@/pages/MateriiMenuPage.vue'
 import TestPage from '@/pages/TestPage.vue'
 
 import ResultsPage from '@/pages/ResultsPage.vue'
+import TeorieClaseMenuPage from '@/pages/TeoriePage.vue'
+import TeorieMateriiMenuPage from '@/pages/TeorieMateriiMenuPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,7 +28,10 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
     {
-      path: '/teorie', name: 'Teorie', component: TeoriePage
+      path: '/teorie', name: 'Teorie', component: TeorieClaseMenuPage
+    },
+    {
+      path: '/teorie/:codclasa', name: 'TeorieClasa', component: TeorieMateriiMenuPage
     },
     {
       path: '/despre', name: 'Despre', component: DesprePage
