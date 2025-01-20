@@ -1,22 +1,33 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue';
+import { RouterLink, RouterView } from 'vue-router';
 
+const isMenuOpen = ref(false);
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
+};
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo py-4" src="@/assets/logo.svg" width="100" height="100" />
 
-    <div class="wrapper">
+    <button class="menu-toggle" @click="toggleMenu">
+      ☰
+    </button>
 
+    <div :class="['wrapper', { open: isMenuOpen }]">
+      <nav>
+        <RouterLink to="/" @click="closeMenu">Home</RouterLink>
 
-      <nav style="margin-top: 20px; font-size: 2rem;">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/clase">Clase</RouterLink>
-
-
-
+        <RouterLink to="/clase" @click="closeMenu">Clase</RouterLink>
+        <RouterLink to="/teorie" @click="closeMenu">Teorie</RouterLink>
+        <RouterLink to="/despre" @click="closeMenu">Despre</RouterLink>
       </nav>
     </div>
   </header>
@@ -27,63 +38,89 @@ import { RouterLink, RouterView } from 'vue-router'
 <style scoped>
 header {
   line-height: 1.5;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333; /* Dark background for header */
+  padding: 1rem;
 }
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  margin: 0 1rem;
 }
 
-nav {
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 100;
+  color: white; /* Icon color for visibility */
+  cursor: pointer;
+  display: none; /* Hidden by default */
+}
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
 
+.wrapper nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper.open {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent dark background */
+  z-index: 1000; /* Ensure it overlays the page */
+  padding: 2rem;
+}
+
+.wrapper.open nav {
+  flex-direction: column;
   text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
 }
 
 nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  padding: 1rem;
+  text-decoration: none;
+  color: white; /* Text color for visibility */
+  font-size: 1.5rem;
+  font-weight: 100;
+  transition: color 0.3s;
 }
 
-nav a:first-of-type {
-  border: 0;
+nav a:hover {
+  color: #f39c12; /* Hover color */
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+nav a.router-link-exact-active {
+  font-weight: 100;
+  color: #f39c12;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show the menu toggle button */
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  .wrapper {
+    display: none;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  .wrapper.open {
+    display: flex; /* Show the menu when open */
   }
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
+  nav a {
     padding: 1rem 0;
-    margin-top: 1rem;
+    display: block;
   }
 }
 </style>

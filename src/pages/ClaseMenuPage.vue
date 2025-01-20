@@ -4,11 +4,11 @@
 
 
     <div class="flex items-center justify-center ">
-      <div class="space-y-1 w-full">
+      <div class=" py-2 w-full">
         <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
           <button
             @click="goToRoute('MateriiMenu', item.codclasa)"
-            class="flex-grow basis-1/2 bg-blue-500 hover:bg-blue-700 text-white font-thin py-2 px-4 h-20 border border-blue-700 rounded-none"
+            class="shared-button"
           >
             {{ item.denumireclasa }}
           </button>
@@ -47,4 +47,35 @@ export default {
   },
 };
 </script>
+<style scoped>
+.greetings {
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Optional: limit the width for better readability */
+  margin: 0 auto; /* Center align for larger screens */
+  padding: 0rem; /* Consistent padding */
+}
 
+.shared-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  background-color: #3498db;
+  color: white;
+  font-weight: 100;
+  padding: 1.5rem; /* Consistent padding */
+  font-size: 1.1rem; /* Consistent font size */
+  border: 2px solid #d413c4;
+  border-radius: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  /* Ensure consistent size */
+  min-height: 5rem;
+  width: 100%;
+}
+
+.shared-button:hover {
+  background-color: #2980b9;
+  color: #ecf0f1;
+}
+</style>

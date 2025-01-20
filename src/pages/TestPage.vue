@@ -1,18 +1,14 @@
 <template>
   <div class="flex flex-col">
-    <h1>This is TEST page</h1>
+
     <div v-if="loading" class="text-center">
       <p>Loading...</p>
     </div>
     <!-- Display quiz items -->
     <div v-else-if="showQuiz && items.length > 0">
       <div v-for="item in items" :key="item.id" class="flex justify-center">
-        {{ quizStore }}
-        <p>Loading state: {{ loading }}</p>
-        <p>Items length: {{ items.length }}</p>
-        <p>Question number: {{ quizStore.questionNumber }}</p>
-        <p>Score: {{ quizStore.score }}</p>
-        <p>Answers: {{ quizStore.answers }}</p>
+       <!-- {{ quizStore }} -->
+
       </div>
     </div>
     <!-- Final test message -->
@@ -23,6 +19,9 @@
       <p>Score:{{ quizStore.score }}</p>
       <p>Answer:{{ quizStore.answers }}</p>
       <p>Questions:{{ quizStore.questionNumber }}</p>
+      <p>calea:{{ quizStore.calea }}</p>
+      <p>CorrectAnswer:{{ quizStore.correctanswer }}</p>
+
     </div>
     <!-- Quiz component or score -->
     <div>

@@ -5,12 +5,16 @@ export const useQuizStore = defineStore('quiz', {
   state: () => ({
     answers: {},
     enunt:{},
+    correctanswer:{},
     questionNumber: 0,
-    score: 0
+    score: 0,
+    calea:'',
   }),
   actions: {
     addAnswer(questionId, answer) {
-      this.answers[questionId] = answer
+      this.answers[questionId] = answer;
+      this.calea = answer.calea;
+      //this.correctAnswer = answer.r;
     },
     nextQuestion() {
       this.questionNumber++;
@@ -18,6 +22,10 @@ export const useQuizStore = defineStore('quiz', {
     addEnunt(questionId, enunt) {
       this.enunt[questionId] = enunt;
     },
+    addCorrectAnswer(questionId, r) {
+      this.correctanswer[questionId] = r;
+    },
+
 
     calculateScore() {
       let calculatedScore = 0; // Start with 0
