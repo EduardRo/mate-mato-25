@@ -1,94 +1,85 @@
 <template>
-  <div class="greetings">
-    <h1 class="green">Alege clasa din meniul de mai jos:</h1>
-    <p>Teoriepage</p>
+  <div class="flex flex-col">
+    Teorie Page
 
-    <div class="flex items-center justify-center ">
-      <div class=" py-2 w-full">
-        <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
-          <button
-            @click="goToRoute('TeorieClasa', item.codclasa)"
-            class="shared-button"
-          >
-            {{ item.denumireclasa }}
-          </button>
-        </div>
+    <div v-if="loading" class="text-center">
+      <p>Loading...</p>
+    </div>
+    <!-- Display quiz items -->
+    <div v-else-if="showQuiz && items.length > 0">
+      <div v-for="item in items" :key="item.id" class="flex justify-center">
+
       </div>
+    </div>
+    <!-- Final test message -->
+    <div v-else>
+    <p>Error</p>
+
+    </div>
+    <!-- Quiz component or score -->
+
+    <div>
+      <TeorieComponent :tests="items" />
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted, computed, onBeforeUnmount } from 'vue';
 import axios from 'axios';
-export default {
-  name: 'TeorieClaseMenuPage',
-  data() {
-    return {
-      items: [],
-    };
-  },
-  mounted() {
-    axios
-      .get('http://127.0.0.1:8000/api/clase')
-      .then((response) => {
-        this.items = response.data;
-      })
-      .catch((error) => {
-        console.error('Error fetching items', error);
-      });
-    console.log(this.items);
-  },
-  methods: {
-    goToRoute(routeName, codclasa) {
-      this.$router.push({ name: routeName, params: { codclasa: codclasa } });
-      console.log(codclasa);
-      console.log(routeName);
-    },
-  },
-};
+
+import TeorieComponent from '@/components/TeorieComponent.vue';
+import { useQuizStore } from '../store/quiz.js';
+import { useRoute } from 'vue-router';
+
+const items = ref([]);
+const loading = ref(true);
+const route = useRoute();
+//const router = useRouter();
+const quizStore = useQuizStore();
+
+// Computed property to determine if the quiz should still be shown
+const showQuiz = computed(() => quizStore.questionNumber < 5);
+
+// Function to reset state variables
+function resetState() {
+  items.value = [];
+  loading.value = true;
+  quizStore.questionNumber = 0; // Reset the question number
+  quizStore.score = 0;
+  quizStore.answers = []; // Clear answers if needed
+  console.log('State reset');
+}
+
+// Function to navigate to another route
+
+
+// Fetch data when the component is mounted
+onMounted(async () => {
+  resetState(); // Reset the state on mount
+  try {
+
+    console.log('Fetching data...');
+    console.log(route.params.codserie);
+    console.log(route.params.codclasa);
+    const response = await axios.get(`http://127.0.0.1:8000/api/teorie/${route.params.codclasa}/${route.params.codserie}`);
+    console.log('Response:', response.data);
+
+    if (Array.isArray(response.data) && response.data.length > 0) {
+      items.value = response.data;
+      console.log('Items updated:', items.value);
+    } else {
+      console.warn('API returned no data or invalid format.');
+    }
+  } catch (error) {
+    console.error('Error fetching items:', error);
+  } finally {
+    loading.value = false; // Stop loading state
+  }
+});
+
+// Optional: Clean up when the component is unmounted
+onBeforeUnmount(() => {
+  resetState();
+});
 </script>
-<style scoped>
-.greetings {
-  width: 100%; /* Full width */
-  max-width: 1200px; /* Optional: limit the width for better readability */
-  margin: 0 auto; /* Center align for larger screens */
-  padding: 0rem; /* Consistent padding */
-}
-
-.green {
-  width: 100%; /* Full width */
-  max-width: 1200px; /* Optional: limit the width for better readability */
-  margin: 0 auto; /* Center align for larger screens */
-  padding: 1rem; /* Consistent padding */
-  font-size: larger;
-  background: blueviolet;
-  color: white;
-  font-weight: 100;
-
-}
-
-
-.shared-button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-  background-color: #3498db;
-  color: white;
-  font-weight: 100;
-  padding: 1.5rem; /* Consistent padding */
-  font-size: 1.1rem; /* Consistent font size */
-  border: 2px solid #d413c4;
-  border-radius: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  /* Ensure consistent size */
-  min-height: 5rem;
-  width: 100%;
-}
-
-.shared-button:hover {
-  background-color: #2980b9;
-  color: #ecf0f1;
-}
-</style>

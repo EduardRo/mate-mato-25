@@ -11,7 +11,7 @@
     <div class="flex items-center justify-center">
       <div class="space-y-0 py-2 w-full">
         <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
-          <button @click="goToRoute('Test', item.codserie)"
+          <button @click="goToRoute('Teorie', item.codserie, item.codclasa )"
 
             class="shared-button">
             <!-- Text on the left -->
@@ -76,8 +76,8 @@ export default {
 
   },
   methods: {
-    goToRoute(routeName, codserie) {
-      this.$router.push({ name: routeName, params: { codserie: codserie } });
+    goToRoute(routeName, codserie, codclasa) {
+      this.$router.push({ name: routeName, params: { codserie: codserie, codclasa: codclasa } });
       console.log(codserie);
       console.log(routeName);
       console.log('those are the items',this.items)

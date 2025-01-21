@@ -26,7 +26,7 @@ const closeMenu = () => {
         <RouterLink to="/" @click="closeMenu">Home</RouterLink>
 
         <RouterLink to="/clase" @click="closeMenu">Clase</RouterLink>
-        <RouterLink to="/teorie" @click="closeMenu">Teorie</RouterLink>
+        <RouterLink to="/teorie/clase" @click="closeMenu">Teorie</RouterLink>
         <RouterLink to="/despre" @click="closeMenu">Despre</RouterLink>
       </nav>
     </div>
@@ -108,6 +108,7 @@ nav a.router-link-exact-active {
 @media (max-width: 768px) {
   .menu-toggle {
     display: block; /* Show the menu toggle button */
+    font-size: 3rem;
   }
 
   .wrapper {

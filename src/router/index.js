@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '../views/HomeView.vue'
+
 import HomePage from '../pages/HomePage.vue'
 
 import DesprePage from '@/pages/DesprePage.vue'
@@ -8,8 +8,9 @@ import MateriiMenuPage from '@/pages/MateriiMenuPage.vue'
 import TestPage from '@/pages/TestPage.vue'
 
 import ResultsPage from '@/pages/ResultsPage.vue'
-import TeorieClaseMenuPage from '@/pages/TeoriePage.vue'
+import TeorieClaseMenuPage from '@/pages/TeorieClaseMenuPage.vue'
 import TeorieMateriiMenuPage from '@/pages/TeorieMateriiMenuPage.vue'
+import TeoriePage from '@/pages/TeoriePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,19 +20,15 @@ const router = createRouter({
       name: 'home',
       component: HomePage,
     },
+
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-    },
-    {
-      path: '/teorie', name: 'Teorie', component: TeorieClaseMenuPage
+      path: '/teorie/clase', name: 'TeorieClase', component: TeorieClaseMenuPage
     },
     {
       path: '/teorie/:codclasa', name: 'TeorieClasa', component: TeorieMateriiMenuPage
+    },
+    {
+      path: '/teorie/:codclasa/:codserie', name: 'Teorie', component: TeoriePage
     },
     {
       path: '/despre', name: 'Despre', component: DesprePage
