@@ -11,6 +11,11 @@ import ResultsPage from '@/pages/ResultsPage.vue'
 import TeorieClaseMenuPage from '@/pages/TeorieClaseMenuPage.vue'
 import TeorieMateriiMenuPage from '@/pages/TeorieMateriiMenuPage.vue'
 import TeoriePage from '@/pages/TeoriePage.vue'
+import '@/views/RegisterView.vue'
+import '@/views/LoginView.vue'
+import RegisterView from '@/views/RegisterView.vue'
+import LoginView from '@/views/LoginView.vue'
+import CallbackView from '@/views/CallbackView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,6 +51,15 @@ const router = createRouter({
 
 
     { path: '/results', name: 'ResultsPage', component: ResultsPage },
+
+    { path: '/register', name: 'RegisterView', component: RegisterView },
+
+    { path: '/login', name: 'LoginView', component: LoginView },
+    {
+      path: '/auth/callback',
+      name: 'callback',
+      component: CallbackView,
+    },
 
   ],
 })
