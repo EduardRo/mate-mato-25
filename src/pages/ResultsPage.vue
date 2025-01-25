@@ -46,7 +46,7 @@
       </div>
 
 
-
+      {{ user.name }} - {{ user.id }} - {{ user }}
 
     </div>
 
@@ -58,6 +58,12 @@
 
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
+import { useAuthStore } from '../store/auth';
+import axios from 'axios';
+import {onMounted} from 'vue';
+import { watch, ref } from 'vue';
+
+const isDataLoaded = ref(false);
 
 const route = useRoute(); // Access route parameters
 const router = useRouter();
@@ -69,6 +75,10 @@ const answers = JSON.parse(route.query.answers);
 const enunt = JSON.parse(route.query.enunt);
 const correctanswer = JSON.parse(route.query.correctanswer);
 let calea = route.query.calea;
+
+//user data
+const authStore = useAuthStore();
+const user = authStore.user;
 
 // Parse if `calea` is a JSON string
 if (typeof calea === 'string') {
@@ -89,6 +99,80 @@ function calculateScore(answer) {
   // Check if the answer starts with "R"
   return answer.startsWith('R') ? 1 : 0;
 }
+watch(
+  () => authStore.token && authStore.user, // Watch for token and user
+  (newVal) => {
+    if (newVal) {
+      isDataLoaded.value = true;
+      saveResults();
+    }
+  },
+  { immediate: true } // Trigger the watcher immediately
+);
+
+onMounted(() => {
+  console.log('Token:', authStore.token);
+  console.log('User:', authStore.user);
+  console.log('Route Params:', route.params);
+  console.log('Score:', score);
+  console.log('Answers:', answers);
+  console.log('Enunt:', enunt);
+  console.log('Correct Answer:', correctanswer);
+  console.log('Calea:', calea);
+});
+
+async function saveResults() {
+  // Ensure all required data is available
+  /*
+  if (!authStore.token || !authStore.user || !route.params.idtest || !route.params.codserie) {
+    console.error('Missing required data:', {
+      token: authStore.token,
+      user: authStore.user,
+      idtest: route.params.idtest,
+      codserie: route.params.codserie,
+    });
+    return;
+  }
+  */
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/api/save-resultat', {
+      /*iduser: authStore.user.id,
+      idtest: route.params.idtest,
+      codserie: route.params.codserie,
+      codtest: 'codtest',
+      punctaj: score,
+      raspuns: JSON.stringify(answers[0]),
+      enunt: JSON.stringify(enunt),
+      correctanswer: JSON.stringify(correctanswer[0]),
+      calea: calea,*/
+      iduser: 33,
+      idtest: 44,
+      codserie: 22,
+      codtest: 22,
+      punctaj: 20,
+      raspuns: 'raspuns',
+      enunt: 'enunt',
+      correctanswer: 'correctanswer',
+      calea: 'calea',
+    }, {
+      headers: {
+        'Authorization': `Bearer ${authStore.token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+
+    console.log('Results saved:', response.data);
+    alert('Results saved successfully!');
+  } catch (error) {
+    console.error('Failed to save results:', error);
+    alert('Failed to save results. Please try again.');
+  }
+}
+
+
+
+
 </script>
 
 <style scoped>
