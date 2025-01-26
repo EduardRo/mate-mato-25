@@ -31,7 +31,7 @@ const logout = () => {
 
     <!-- Welcome message above the menu line -->
     <div v-if="authStore.user" class="welcome-message">
-      Welcome, {{ authStore.user.name }}
+      Welcome, {{ authStore.user.name }} {{ authStore.user.iduser }}
       <button @click="logout" class="logout-button">Logout</button>
     </div>
 

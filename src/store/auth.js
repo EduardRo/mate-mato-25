@@ -9,10 +9,13 @@ import { defineStore } from 'pinia';
       setToken(token) {
         this.token = token;
         localStorage.setItem('token', token); // Save token to localStorage
+        console.log('Token set:', token);
+
       },
       setUser(user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(user)); // Save user to localStorage
+        console.log('user set:', this.user);
       },
       clearAuth() {
         this.token = null;

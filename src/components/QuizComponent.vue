@@ -1,6 +1,7 @@
 <script setup>
 
 import { useQuizStore } from '../store/quiz.js';
+import { useAuthStore } from '@/store/auth.js';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -29,6 +30,7 @@ function saveAnswerAndNextQuestion(answer, enunt, calea,r) {
     //console.log(quizStore.score);
     //console.log(quizStore.answers);
     //console.log("calea",{calea});
+
     router.push({
   name: 'ResultsPage',
   query: { score: quizStore.score,
@@ -36,6 +38,7 @@ function saveAnswerAndNextQuestion(answer, enunt, calea,r) {
     enunt: JSON.stringify(quizStore.enunt),
     calea:JSON.stringify({calea}),
     correctanswer: JSON.stringify(quizStore.correctanswer),
+    iduser: useAuthStore().user.id,
   },
 
 });

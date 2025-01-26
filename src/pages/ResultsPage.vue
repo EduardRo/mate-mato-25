@@ -67,7 +67,7 @@ const isDataLoaded = ref(false);
 
 const route = useRoute(); // Access route parameters
 const router = useRouter();
-console.log(route.query);
+console.log('Route Query:', route.query);
 
 // Extract parameters from the route
 const score = route.query.score;
@@ -75,7 +75,7 @@ const answers = JSON.parse(route.query.answers);
 const enunt = JSON.parse(route.query.enunt);
 const correctanswer = JSON.parse(route.query.correctanswer);
 let calea = route.query.calea;
-
+const iduser = route.query.iduser;
 //user data
 const authStore = useAuthStore();
 const user = authStore.user;
@@ -119,6 +119,7 @@ onMounted(() => {
   console.log('Enunt:', enunt);
   console.log('Correct Answer:', correctanswer);
   console.log('Calea:', calea);
+  console.log('User_id:', iduser);
 });
 
 async function saveResults() {
@@ -133,18 +134,20 @@ async function saveResults() {
     });
     return;
   }
-  */
+*/
+  console.log('codetest',route.params.codtest);
   try {
     const response = await axios.post('http://127.0.0.1:8000/api/save-resultat', {
-      /*iduser: authStore.user.id,
-      idtest: route.params.idtest,
-      codserie: route.params.codserie,
-      codtest: 'codtest',
+      iduser: authStore.user.iduser,
+      idtest:44,
+      codserie: 'cdsr',
+      codtest: 'cdtst',
       punctaj: score,
       raspuns: JSON.stringify(answers[0]),
-      enunt: JSON.stringify(enunt),
-      correctanswer: JSON.stringify(correctanswer[0]),
-      calea: calea,*/
+      enunt: JSON.stringify(enunt[0]),
+      raspuns_corect: JSON.stringify(correctanswer[0]),
+      calea: calea,
+      /*
       iduser: 33,
       idtest: 44,
       codserie: 'MMcodserie',
@@ -154,6 +157,8 @@ async function saveResults() {
       raspuns: 'raspuns',
       raspuns_corect: 'correctanswer',
       calea: 'calea',
+      */
+
     }, {
       headers: {
         'Authorization': `Bearer ${authStore.token}`,
@@ -161,12 +166,12 @@ async function saveResults() {
         'Content-Type': 'application/json',
       },
     });
-
+    console.log(authStore.token);
     console.log('Results saved:', response.data);
-    alert('Results saved successfully!');
+    //alert('Results saved successfully!');
   } catch (error) {
     console.error('Failed to save results:', error);
-    alert('Failed to save results. Please try again.');
+    //alert('Failed to save results. Please try again.');
   }
 }
 
