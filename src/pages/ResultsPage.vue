@@ -147,12 +147,12 @@ async function saveResults() {
       calea: calea,*/
       iduser: 33,
       idtest: 44,
-      codserie: 22,
-      codtest: 22,
+      codserie: 'MMcodserie',
+      codtest: 'CT22',
       punctaj: 20,
-      raspuns: 'raspuns',
       enunt: 'enunt',
-      correctanswer: 'correctanswer',
+      raspuns: 'raspuns',
+      raspuns_corect: 'correctanswer',
       calea: 'calea',
     }, {
       headers: {
