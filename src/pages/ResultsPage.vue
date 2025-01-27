@@ -76,6 +76,7 @@ const enunt = JSON.parse(route.query.enunt);
 const correctanswer = JSON.parse(route.query.correctanswer);
 let calea = route.query.calea;
 const iduser = route.query.iduser;
+const codserie = route.query.codserie;
 //user data
 const authStore = useAuthStore();
 const user = authStore.user;
@@ -120,6 +121,8 @@ onMounted(() => {
   console.log('Correct Answer:', correctanswer);
   console.log('Calea:', calea);
   console.log('User_id:', iduser);
+  console.log('Id User:', authStore.user.iduser);
+  console.log('codserie:', codserie);
 });
 
 async function saveResults() {
@@ -138,26 +141,12 @@ async function saveResults() {
   console.log('codetest',route.params.codtest);
   try {
     const response = await axios.post('http://127.0.0.1:8000/api/save-resultat', {
+      // salvare rezultate
       iduser: authStore.user.iduser,
-      idtest:44,
-      codserie: 'cdsr',
-      codtest: 'cdtst',
+      codserie: codserie,
       punctaj: score,
-      raspuns: JSON.stringify(answers[0]),
-      enunt: JSON.stringify(enunt[0]),
-      raspuns_corect: JSON.stringify(correctanswer[0]),
-      calea: calea,
-      /*
-      iduser: 33,
-      idtest: 44,
-      codserie: 'MMcodserie',
-      codtest: 'CT22',
-      punctaj: 20,
-      enunt: 'enunt',
-      raspuns: 'raspuns',
-      raspuns_corect: 'correctanswer',
-      calea: 'calea',
-      */
+
+
 
     }, {
       headers: {

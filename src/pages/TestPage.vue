@@ -25,7 +25,10 @@
     </div>
     <!-- Quiz component or score -->
     <div>
-      <Quiz v-if="showQuiz && items.length > 0" :questions="items[quizStore.questionNumber]" />
+      <Quiz
+      v-if="showQuiz && items.length > 0"
+      :questions="items[quizStore.questionNumber]"
+      :codserie="codserie"  />
 
     </div>
   </div>
@@ -43,6 +46,7 @@ const loading = ref(true);
 const route = useRoute();
 //const router = useRouter();
 const quizStore = useQuizStore();
+const codserie = ref('');
 
 // Computed property to determine if the quiz should still be shown
 const showQuiz = computed(() => quizStore.questionNumber < 5);
@@ -70,6 +74,8 @@ onMounted(async () => {
 
     if (Array.isArray(response.data) && response.data.length > 0) {
       items.value = response.data;
+      codserie.value = response.data[0].codserie;
+      console.log('codserie:', codserie.value);
       console.log('Items updated:', items.value);
     } else {
       console.warn('API returned no data or invalid format.');

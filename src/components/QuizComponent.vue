@@ -7,6 +7,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const props = defineProps({
   questions: Object,
+  codserie: String,
 });
 const quizStore = useQuizStore();
 
@@ -39,6 +40,7 @@ function saveAnswerAndNextQuestion(answer, enunt, calea,r) {
     calea:JSON.stringify({calea}),
     correctanswer: JSON.stringify(quizStore.correctanswer),
     iduser: useAuthStore().user.id,
+    codserie: props.codserie,
   },
 
 });
