@@ -1,7 +1,7 @@
 <template>
   <div class="greetings">
-    <h1 class="green">Alege clasa din meniul de mai jos:</h1>
-    <p>Teoriepage</p>
+    <h1 class="green">TEORIE - Alege clasa din meniul de mai jos:</h1>
+
 
     <div class="flex items-center justify-center ">
       <div class=" py-2 w-full">
@@ -78,7 +78,7 @@ export default {
   font-weight: 100;
   padding: 1.5rem; /* Consistent padding */
   font-size: 1.1rem; /* Consistent font size */
-  border: 2px solid #d413c4;
+  border: 1px solid #ffffff;
   border-radius: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 

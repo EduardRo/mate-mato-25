@@ -32,6 +32,7 @@ export default {
       .get('http://127.0.0.1:8000/api/clase')
       .then((response) => {
         this.items = response.data;
+        console.log(this.items);
       })
       .catch((error) => {
         console.error('Error fetching items', error);
@@ -78,7 +79,7 @@ export default {
   font-weight: 100;
   padding: 1.5rem; /* Consistent padding */
   font-size: 1.1rem; /* Consistent font size */
-  border: 2px solid #d413c4;
+  border: 1px solid #ffffff;
   border-radius: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 

@@ -92,7 +92,7 @@ if (typeof calea === 'string') {
 }
 // Function to go back to the quiz
 function goBackToQuiz() {
-  router.push({ name: 'Clase' }); // Redirect to the quiz page (adjust name as needed)
+  router.push({ name: 'Teste' }); // Redirect to the quiz page (adjust name as needed)
 }
 
 // Function to calculate the score

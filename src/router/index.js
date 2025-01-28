@@ -16,6 +16,7 @@ import '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import LoginView from '@/views/LoginView.vue'
 import CallbackView from '@/views/CallbackView.vue'
+import AbonamentePage from '@/pages/AbonamentePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,16 +40,18 @@ const router = createRouter({
       path: '/despre', name: 'Despre', component: DesprePage
     },
     {
-      path:'/clase', name:'Clase', component:ClaseMenuPage
+      path:'/teste', name:'Teste', component:ClaseMenuPage
     },
     {
       path:'/materii/:codclasa', name:'MateriiMenu', component:MateriiMenuPage
     },
 
     {
-      path:'/test/:codserie', name:'Test', component:TestPage
+      path:'/teste/:codserie', name:'Test', component:TestPage
     },
-
+    {
+      path:'/abonamente', name:'Abonamente', component:AbonamentePage
+    },
 
     { path: '/results', name: 'ResultsPage', component: ResultsPage },
 

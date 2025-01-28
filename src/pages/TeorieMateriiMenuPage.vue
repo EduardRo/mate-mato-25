@@ -3,9 +3,10 @@
     <p v-if="$route.params.codclasa" class="green">
       Materia Clasei a {{ $route.params.codclasa }}-a
 
-    </p><p class="green">Alege materia din meniul de mai jos:</p>
+    </p>
+    <p class="green">TEORIE - Alege materia din meniul de mai jos:</p>
 
-    <p>TeorieMateriiMenuPage</p>
+
 
 
     <div class="flex items-center justify-center">
@@ -121,7 +122,7 @@ export default {
   font-weight: 100;
   padding: 1.5rem; /* Consistent padding */
   font-size: 1.1rem; /* Consistent font size */
-  border: 2px solid #d413c4;
+  border: 1px solid #ffffff;
   border-radius: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 
