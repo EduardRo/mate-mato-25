@@ -19,11 +19,7 @@
             <span>{{ item.denumireserie }} - {{ item.codserie }}</span>
             <!-- Icons on the right -->
             <div class="flex space-x-1">
-              <StarIcon class="h-5 w-5 " />
-              <StarIcon class="h-5 w-5 d" />
-              <StarIcon class="h-5 w-5 text-red-500" />
-              <StarIcon class="h-5 w-5 text-red-500" />
-              <StarIcon class="h-5 w-5" style="fill: url(#half-gradient);" />
+
               <!-- Gradient definition -->
 
             </div>

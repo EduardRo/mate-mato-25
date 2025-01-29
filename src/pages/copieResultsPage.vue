@@ -14,10 +14,9 @@
     -->
     <!-- Images and answer display -->
     <div v-for="(answer, questionId) in answers" :key="questionId"
-    class="flex flex-col px-1 pt-1">
+    class="flex flex-col px-1 pt-10">
       <!-- Question image -->
-      <hr class="my-1 border-t-8  border-t-violet-500 border-b-violet-500 py-1">
-      <p class="text-left text-4xl text-white font-size-100 font-sans">Intrebare:{{ questionId+1 }}</p>
+      <hr class="my-10 border-t-red-500 border-b-violet-500 py-0">
       <img
         :src="`https://matematicon.ro/m/mem/${calea}${enunt[questionId]}.png`"
         class="bg-white p-5 object-contain w-full h-[300px]"
@@ -30,26 +29,25 @@
         <img
           :src="`https://matematicon.ro/m/mem/${calea}${answer}.png`"
           :class="{ 'bg-red-500': calculateScore(answer) === 0, 'bg-green-500': calculateScore(answer) !== 0 }"
-    class=" px-5 py-2 object-contain "
+    class=" px-5 py-2 object-contain w-full h-[300px]"
           alt="Answer Image"
         />
         <p v-if="calculateScore(answer) === 1"
-        class="text-white text-4xl p-5">Raspuns corect, ai primit {{calculateScore(answer)}} punct!</p>
-      <p v-else class="text-red-500 text-left text-4xl">Raspuns gresit, ai primit {{calculateScore(answer)}} puncte!</p>
-      <p v-if="calculateScore(answer) === 0"
-        class="text-white text-left text-4xl">Raspuns corect este:</p>
-        <div class="flex-auto flex-wrap gap-4 my-2 w-full" :class="{ 'bg-blue-500': calculateScore(answer) === 0 }">
-        <img v-if="calculateScore(answer) === 0"
+        class="text-white text-4xl">Raspuns corect, ai primit {{calculateScore(answer)}} punct!</p>
+      <p v-else class="text-red-500 text-4xl">Raspuns gresit, ai primit {{calculateScore(answer)}} puncte!</p>
+      <h5 v-if="calculateScore(answer) === 0"
+        class="text-blue-500 text-4xl">Raspuns corect este:</h5>
+      <img v-if="calculateScore(answer) === 0"
           :src="`https://matematicon.ro/m/mem/${calea}${correctanswer[questionId]}.png`"
           :class="{ 'bg-blue-500': calculateScore(answer) === 0 }"
-          class="p-5  object-contain "
+          class="p-5  object-contain w-full h-[300px]"
           alt="Answer Image"
-        /></div>
+        />
       </div>
 
-      <!-- User data
+
       {{ user.name }} - {{ user.id }} - {{ user }}
-      -->
+
     </div>
 
     <button @click="goBackToQuiz" class="bg-blue-700 text-white py-2 px-4 rounded mt-4">

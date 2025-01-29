@@ -24,7 +24,7 @@ export default {
 
     <!-- Option 1 -->
   </div>
-    <div class="flex flex-wrap  ">
+    <div class=" bg-blue-700">
 
         <img
           :src="`https://matematicon.ro/m/mem/${test.calea}${test.raspuns}.png`"

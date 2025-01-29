@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    Teorie Page
+
 
     <div v-if="loading" class="text-center">
       <p>Loading...</p>
