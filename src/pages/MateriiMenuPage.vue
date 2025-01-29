@@ -144,7 +144,7 @@ export default {
   /* Consistent padding */
   font-size: 1.1rem;
   /* Consistent font size */
-  border: 2px solid #d413c4;
+  border: 2px solid #ffffff;
   border-radius: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 
