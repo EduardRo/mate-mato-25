@@ -27,7 +27,7 @@ const logout = () => {
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo py-4" src="@/assets/logo.svg" width="100" height="100" />
+    <img alt="Vue logo" class="logo py-4" src="@/assets/logo.png" width="150" height="150" />
 
     <!-- Welcome message above the menu line -->
     <div v-if="authStore.user" class="welcome-message">

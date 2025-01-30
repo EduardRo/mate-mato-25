@@ -4,8 +4,8 @@
       <h1>Home Page</h1>
       <p>Welcome to the home page.dfedf</p>
     </div>
-    <div>Pula<BeakerIcon class="h-6 w-6 text-green-500" />
-
+    <div><BeakerIcon class="h-6 w-6 text-green-500" />
+      Bine ati venit pe aplicatia Mate-Mato pentru elevi si profesori!
     </div>
   </template>
 
