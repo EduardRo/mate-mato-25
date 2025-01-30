@@ -45,6 +45,7 @@ const logout = () => {
         <RouterLink to="/teste" @click="closeMenu">Teste</RouterLink>
         <RouterLink to="/teorie/clase" @click="closeMenu">Teorie</RouterLink>
         <RouterLink to="/abonamente" @click="closeMenu">Abonamente</RouterLink>
+        <RouterLink to="/rezultate/grafic" @click="closeMenu">Rezultate</RouterLink>
         <RouterLink to="/despre" @click="closeMenu">Despre</RouterLink>
         <RouterLink v-if="!authStore.user" to="/login" @click="closeMenu">Login</RouterLink>
         <RouterLink v-if="!authStore.user" to="/register" @click="closeMenu">Register</RouterLink>

@@ -81,7 +81,7 @@ const iduser = route.query.iduser;
 const codserie = route.query.codserie;
 //user data
 const authStore = useAuthStore();
-const user = authStore.user;
+//const user = authStore.user;
 
 // Parse if `calea` is a JSON string
 if (typeof calea === 'string') {

@@ -45,7 +45,7 @@
 
 <script>
 import axios from 'axios';
-import { StarIcon } from '@heroicons/vue/24/outline';
+//import { StarIcon } from '@heroicons/vue/24/outline';
 export default {
   name: 'MateriiMenuPage',
   data() {
@@ -56,7 +56,7 @@ export default {
 
   },
   components: {
-    StarIcon
+    //StarIcon
   },
   computed: {
     codclasa() {
