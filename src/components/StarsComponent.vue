@@ -30,6 +30,7 @@ const score = ref(props.score);
 // 0 = red, 1 = halfyellow 2 = yellow
 function getStarComponent(score) {
   console.log('this is the score',score);
+
   if (score < 1) {
     return [0,0,0,0,0];
   } else if (score < 2) {
@@ -65,9 +66,9 @@ onMounted(() => {
 <template>
   <div class="flex items-center justify-center">
     <template v-for="(starType, index) in starsArray" :key="index">
-      <RedStar v-if="starType === 0" />
-      <HalfYellowStar v-else-if="starType === 1" />
-      <YellowStar v-else-if="starType === 2" />
+      <RedStar v-if="starType === 0" style="width: 1.2rem; height: 1.2rem;" />
+      <HalfYellowStar v-else-if="starType === 1" style="width: 1.2rem; height: 1.2rem;"/>
+      <YellowStar v-else-if="starType === 2" style="width: 1.2rem; height: 1.2rem;"/>
     </template>
   </div>
 </template>

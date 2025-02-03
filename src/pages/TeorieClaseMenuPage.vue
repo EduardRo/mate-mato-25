@@ -1,7 +1,6 @@
 <template>
   <div class="greetings">
-    <h1 class="green">TEORIE - Alege clasa din meniul de mai jos:</h1>
-
+    <p class="green">TEORIE - Alege clasa din meniul de mai jos:</p>
 
     <div class="flex items-center justify-center ">
       <div class=" py-2 w-full">

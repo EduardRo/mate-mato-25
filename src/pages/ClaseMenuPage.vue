@@ -1,6 +1,6 @@
 <template>
   <div class="greetings">
-    <h1 class="green">Alege clasa din meniul de mai jos:</h1>
+    <p class="green">TESTE - Alege clasa din meniul de mai jos:</p>
 
 
     <div class="flex items-center justify-center ">

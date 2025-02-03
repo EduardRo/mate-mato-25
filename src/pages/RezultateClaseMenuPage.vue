@@ -1,13 +1,12 @@
 <template>
   <div class="greetings">
-    <h1 class="green">Alege clasa din meniul de mai jos:</h1>
-
+    <p class="green">REZULTATE - Alege clasa din meniul de mai jos:</p>
 
     <div class="flex items-center justify-center ">
       <div class=" py-2 w-full">
         <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
           <button
-            @click="goToRoute('MateriiMenu', item.codclasa)"
+            @click="goToRoute('RezultateMateriiMenu', item.codclasa)"
             class="shared-button"
           >
             {{ item.denumireclasa }}

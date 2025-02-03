@@ -19,6 +19,8 @@ import CallbackView from '@/views/CallbackView.vue'
 import AbonamentePage from '@/pages/AbonamentePage.vue'
 //import RezultateGraphicPage from '@/pages/RezultateGraphicPage.vue'
 import RezultateClaseMenuPage from '@/pages/RezultateClaseMenuPage.vue'
+import RezultateMateriiMenuPage from '@/pages/RezultateMateriiMenuPage.vue'
+import RezultateGraphicPage from '@/pages/RezultateGraphicPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -67,6 +69,12 @@ const router = createRouter({
     },
     {
       path: '/rezultate/clase', name: 'RezultateClaseMenu', component: RezultateClaseMenuPage
+    },
+    {
+      path: '/rezultate/materii/:codclasa', name: 'RezultateMateriiMenu', component: RezultateMateriiMenuPage
+    },
+    {
+      path: '/rezultate/:codserie', name: 'RezultateGraphicPage', component: RezultateGraphicPage
     },
 
   ],

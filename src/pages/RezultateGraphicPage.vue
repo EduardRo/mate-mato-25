@@ -12,6 +12,8 @@
     <div class="text-2xl text-yellow-500">Denumire Serie: {{ denumireserie }}</div>
     <div class="text-2xl text-yellow-500">Numarul de teste: {{ items.length }}</div>
     <div class="text-2xl text-yellow-500">Media obtinuta: {{ calculateScore(items) }}</div>
+    <!-- Render StarsComponent only if score has a valid value -->
+    <StarsComponent v-if="score > 0" :id="score" :score="score" />
   </div>
 </template>
 
@@ -19,7 +21,7 @@
 import axios from 'axios';
 import { Line } from 'vue-chartjs';
 import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, PointElement, CategoryScale, LinearScale } from 'chart.js';
-
+import StarsComponent from '@/components/StarsComponent.vue';
 ChartJS.register(
   Title,
   Tooltip,
@@ -33,10 +35,12 @@ ChartJS.register(
 export default {
   name: 'RezultateGraphicPage',
   components: {
-    LineChart: Line
+    LineChart: Line,
+    StarsComponent,
   },
   data() {
     return {
+      score: 0,
       denumireserie: '',
       items: [],
       chartData: {
@@ -71,21 +75,28 @@ export default {
       }
     };
   },
+
   methods: {
     calculateScore(items) {
       const totalPunctaj = items.reduce((sum, item) => sum + item.punctaj, 0);
 
 // Calculate the average
     const averagePunctaj = totalPunctaj / items.length;
+
     return averagePunctaj;
 
     }
   },
   mounted() {
-    axios.get('http://127.0.0.1:8000/api/rezultate/1/M10AL02')
+
+    console.log(this.$route.params.codserie);
+    console.log(`http://127.0.0.1:8000/api/rezultate/1/${this.$route.params.codserie}`);
+    axios.get(`http://127.0.0.1:8000/api/rezultate/1/${this.$route.params.codserie}`)
       .then(response => {
         this.items = response.data;
+        this.score=this.calculateScore(this.items);
         console.log(this.items);
+        console.log(response.data);
         this.denumireserie = this.items[0].denumireserie
 
         // Format labels from created_at

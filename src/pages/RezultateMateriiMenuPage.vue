@@ -1,14 +1,14 @@
 <template>
   <div class="greetings">
     <p v-if="$route.params.codclasa" class="green">
-      TESTE - Materia Clasei a {{ $route.params.codclasa }}-a
+      REZULTATE Clasa a {{ $route.params.codclasa }}-a, Alege materia din meniul de mai jos:
     </p>
-    <p class="green">Alege materia din meniul de mai jos:</p>
+
 
     <div class="flex items-center justify-center">
       <div class="space-y-0 py-2 w-full">
         <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
-          <button @click="goToRoute('Test', item.codserie)" class="shared-button">
+          <button @click="goToRoute('RezultateGraphicPage', item.codserie)" class="shared-button">
             <!-- Text on the left -->
             <span>{{ item.denumireserie }} - {{ item.codserie }}</span>
             <!-- Icons on the right -->
@@ -16,7 +16,7 @@
               <!-- Dynamically pass score -->
               <StarsComponent v-if="scores[item.codserie] !== undefined" :id="item.id"
                 :score="getSeriesScore(item.codserie)" />
-              <span v-else><span v-if="user">loading...</span><span v-else class="text-red-500 text-sm"></span></span>
+              <span v-else>Loading...</span>
             </div>
           </button>
         </div>
@@ -28,10 +28,11 @@
 <script>
 import axios from 'axios';
 import StarsComponent from '@/components/StarsComponent.vue';
+
 import { useAuthStore } from '@/store/auth';
 
 export default {
-  name: 'TeorieMateriiMenuPage',
+  name: 'RezultateMateriiMenuPage',
   data() {
     return {
       items: [], // Fetched items
@@ -103,34 +104,24 @@ export default {
 
 <style scoped>
 .greetings {
-  width: 100%;
-  /* Full width */
-  max-width: 1200px;
-  /* Optional: limit the width for better readability */
-  margin: 0 auto;
-  /* Center align for larger screens */
-  padding: 0rem;
-  /* Consistent padding */
-  font-size: larger;
-  background: blueviolet;
-  color: white;
-  font-weight: 100;
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Optional: limit the width for better readability */
+  margin: 0 auto; /* Center align for larger screens */
+  padding: 0rem; /* Consistent padding */
 }
 
 .green {
-  width: 100%;
-  /* Full width */
-  max-width: 1200px;
-  /* Optional: limit the width for better readability */
-  margin: 0 auto;
-  /* Center align for larger screens */
-  padding: 1rem;
-  /* Consistent padding */
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Optional: limit the width for better readability */
+  margin: 0 auto; /* Center align for larger screens */
+  padding: 1rem; /* Consistent padding */
   font-size: larger;
   background: blueviolet;
   color: white;
   font-weight: 100;
+
 }
+
 
 .shared-button {
   display: flex;
@@ -140,11 +131,9 @@ export default {
   background-color: #3498db;
   color: white;
   font-weight: 100;
-  padding: 1.5rem;
-  /* Consistent padding */
-  font-size: 1.1rem;
-  /* Consistent font size */
-  border: 2px solid #ffffff;
+  padding: 1.5rem; /* Consistent padding */
+  font-size: 1.1rem; /* Consistent font size */
+  border: 1px solid #ffffff;
   border-radius: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 
