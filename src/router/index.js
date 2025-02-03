@@ -17,7 +17,8 @@ import RegisterView from '@/views/RegisterView.vue'
 import LoginView from '@/views/LoginView.vue'
 import CallbackView from '@/views/CallbackView.vue'
 import AbonamentePage from '@/pages/AbonamentePage.vue'
-import RezultateGraphicPage from '@/pages/RezultateGraphicPage.vue'
+//import RezultateGraphicPage from '@/pages/RezultateGraphicPage.vue'
+import RezultateClaseMenuPage from '@/pages/RezultateClaseMenuPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -65,7 +66,7 @@ const router = createRouter({
       component: CallbackView,
     },
     {
-      path: '/rezultate/grafic', name: 'RezultateGraphic', component: RezultateGraphicPage
+      path: '/rezultate/clase', name: 'RezultateClaseMenu', component: RezultateClaseMenuPage
     },
 
   ],
