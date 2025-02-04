@@ -8,11 +8,16 @@
     <div class="flex items-center justify-center">
       <div class="space-y-0 py-2 w-full">
         <div v-for="item in items" :key="item.id" class="flex justify-center w-full">
-          <button @click="goToRoute('RezultateGraphicPage', item.codserie)" class="shared-button">
-            <!-- Text on the left -->
-            <span>{{ item.denumireserie }} - {{ item.codserie }}</span>
-            <!-- Icons on the right -->
-            <div class="flex space-x-1">
+          <button @click="goToRoute('RezultateGraphicPage', item.codserie)"
+            class="shared-button flex items-center justify-between w-full px-4 py-2 border border-gray-300  bg-white cursor-pointer">
+            <!-- Zone 1: Left-aligned text -->
+            <span class="flex-1 text-left">{{ item.denumireserie }} - {{ item.codserie }}</span>
+
+            <!-- Zone 2: Right-aligned text -->
+            <span class="flex-1 text-right">Numar incercari: {{ attempts[item.codserie] }}</span>
+
+            <!-- Zone 3: Icons on the right -->
+            <div class="flex-1 flex justify-end space-x-1">
               <!-- Dynamically pass score -->
               <StarsComponent v-if="scores[item.codserie] !== undefined" :id="item.id"
                 :score="getSeriesScore(item.codserie)" />
@@ -37,6 +42,7 @@ export default {
     return {
       items: [], // Fetched items
       scores: {}, // Map of codserie to scores
+      attempts: [],
     };
   },
   components: {
@@ -56,6 +62,7 @@ export default {
       .get(`http://127.0.0.1:8000/api/serii/${this.$route.params.codclasa}`)
       .then((response) => {
         this.items = response.data; // Store fetched items
+        console.log('those are the items ', this.items);
         // Calculate scores for each item
         this.items.forEach((item) => {
           this.calculateScore(item.codserie);
@@ -88,6 +95,10 @@ export default {
 
         // Update scores object reactively
         this.scores[codserie] = response.data.data.average_score;
+        this.attempts[codserie] = response.data.data.attempts;
+        console.log('Raspuns:', response);
+        console.log('Scores updated:', this.scores);
+        console.log('Numar incercari', this.attempts[codserie]);
       } catch (error) {
         console.error('Error calculating score:', error.response?.data || error);
       }
@@ -104,17 +115,25 @@ export default {
 
 <style scoped>
 .greetings {
-  width: 100%; /* Full width */
-  max-width: 1200px; /* Optional: limit the width for better readability */
-  margin: 0 auto; /* Center align for larger screens */
-  padding: 0rem; /* Consistent padding */
+  width: 100%;
+  /* Full width */
+  max-width: 1200px;
+  /* Optional: limit the width for better readability */
+  margin: 0 auto;
+  /* Center align for larger screens */
+  padding: 0rem;
+  /* Consistent padding */
 }
 
 .green {
-  width: 100%; /* Full width */
-  max-width: 1200px; /* Optional: limit the width for better readability */
-  margin: 0 auto; /* Center align for larger screens */
-  padding: 1rem; /* Consistent padding */
+  width: 100%;
+  /* Full width */
+  max-width: 1200px;
+  /* Optional: limit the width for better readability */
+  margin: 0 auto;
+  /* Center align for larger screens */
+  padding: 1rem;
+  /* Consistent padding */
   font-size: larger;
   background: blueviolet;
   color: white;
@@ -131,8 +150,10 @@ export default {
   background-color: #3498db;
   color: white;
   font-weight: 100;
-  padding: 1.5rem; /* Consistent padding */
-  font-size: 1.1rem; /* Consistent font size */
+  padding: 1.5rem;
+  /* Consistent padding */
+  font-size: 1.1rem;
+  /* Consistent font size */
   border: 1px solid #ffffff;
   border-radius: none;
   transition: background-color 0.3s ease, color 0.3s ease;

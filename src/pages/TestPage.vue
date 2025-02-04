@@ -13,6 +13,7 @@
     </div>
     <!-- Final test message -->
     <div v-else>
+      bla bla bla
       <p>This is the final of the test</p>
       <p>CodSerie:{{ route.params.codserie }}</p>
       <p>enunt:{{ quizStore.enunt }}</p>

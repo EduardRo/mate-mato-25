@@ -7,7 +7,7 @@ import ClaseMenuPage from '@/pages/ClaseMenuPage.vue'
 import MateriiMenuPage from '@/pages/MateriiMenuPage.vue'
 import TestPage from '@/pages/TestPage.vue'
 
-import ResultsPage from '@/pages/ResultsPage.vue'
+//import ResultsPage from '@/pages/SalvareResultatePage.vue'
 import TeorieClaseMenuPage from '@/pages/TeorieClaseMenuPage.vue'
 import TeorieMateriiMenuPage from '@/pages/TeorieMateriiMenuPage.vue'
 import TeoriePage from '@/pages/TeoriePage.vue'
@@ -21,6 +21,7 @@ import AbonamentePage from '@/pages/AbonamentePage.vue'
 import RezultateClaseMenuPage from '@/pages/RezultateClaseMenuPage.vue'
 import RezultateMateriiMenuPage from '@/pages/RezultateMateriiMenuPage.vue'
 import RezultateGraphicPage from '@/pages/RezultateGraphicPage.vue'
+import SalvareResultatePage from '@/pages/SalvareResultatePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,7 +58,7 @@ const router = createRouter({
       path:'/abonamente', name:'Abonamente', component:AbonamentePage
     },
 
-    { path: '/results', name: 'ResultsPage', component: ResultsPage },
+    { path: '/results', name: 'ResultsPage', component: SalvareResultatePage },
 
     { path: '/register', name: 'RegisterView', component: RegisterView },
 
